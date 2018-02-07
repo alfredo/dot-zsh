@@ -1,9 +1,5 @@
 #
 # Defines general aliases.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
 
 setopt CORRECT # Correct commands.
 
@@ -38,28 +34,12 @@ alias lr='ls -lhR'           # Recursive ls.
 alias sl='ls'                # I often screw this up.
 
 # General
-alias _='sudo'
 alias b="$BROWSER"
-alias cd='nocorrect cd'
-alias cp='nocorrect cp -i'
 alias df='df -kh'
 alias du='du -kh'
-alias e="$EDITOR"
-alias find='noglob find'
-alias fc='noglob fc'
-alias gcc='nocorrect gcc'
-alias history='noglob history'
-alias ln='nocorrect ln -i'
-alias locate='noglob locate'
-alias man='nocorrect man'
-alias mkdir='nocorrect mkdir -p'
-alias mv='nocorrect mv -i'
 alias p="$PAGER"
 alias po='popd'
 alias pu='pushd'
-alias rake='noglob rake'
-alias rm='nocorrect rm -i'
-alias scp='nocorrect scp'
 alias type='type -a'
 
 # Mac OS X
@@ -80,10 +60,6 @@ else
     alias pbpaste='xsel --clipboard --output'
   fi
 fi
-
-alias pbc='pbcopy'
-alias pbp='pbpaste'
-
 # Top
 if (( $+commands[htop] )); then
   alias top=htop
@@ -129,11 +105,7 @@ fi
 
 # Miscellaneous
 (( $+commands[ack] )) && alias afind='nocorrect ack -g'
-(( $+commands[ebuild] )) && alias ebuild='nocorrect ebuild'
-(( $+commands[gist] )) && alias gist='nocorrect gist'
 (( $+commands[heroku] )) && alias heroku='nocorrect heroku'
-(( $+commands[mysql] )) && alias mysql='nocorrect mysql'
-
 
 alias pym='python manage.py'
 alias dj='django-admin.py'
