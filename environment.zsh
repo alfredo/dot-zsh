@@ -101,11 +101,8 @@ fi
 export LESSCHARSET="UTF-8"
 export LESSHISTFILE='-'
 export LESSEDIT='vim ?lm+%lm. %f'
-export LESS='-g -i -M -R -S -w -z-4'
+export LESS="-FSRXw"
 
-if (( $+commands[lesspipe.sh] )); then
-  export LESSOPEN='| /usr/bin/env lesspipe.sh %s 2>&-'
-fi
 
 # Termcap
 if zstyle -t ':omz:environment:termcap' color; then
