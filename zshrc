@@ -27,8 +27,13 @@ source ~/dot-zsh/directory.zsh
 
 # Python
 export WORKON_HOME=$HOME/.virtualenvs
-source /usr/bin/virtualenvwrapper.sh
 export PYTHONSTARTUP=$HOME/.python/startup.py
+if [[ "$OSTYPE" == darwin* ]]; then
+    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+    source /usr/local/bin/virtualenvwrapper_lazy.sh
+else
+    source /usr/bin/virtualenvwrapper.sh
+fi
 
 # Alias
 source ~/dot-zsh/alias.zsh
@@ -39,7 +44,14 @@ source ~/dot-zsh/completion.zsh
 source ~/dot-zsh/utility.zsh
 
 # Set up Node Version Manager
-source /usr/share/nvm/init-nvm.sh
+if [[ "$OSTYPE" == darwin* ]]; then
+    export HOMEBREW_NO_ANALYTICS=1
+    export NVM_DIR="$(realpath $HOME)/.nvm"
+    source /usr/local/opt/nvm/nvm.sh
+else
+    source /usr/share/nvm/init-nvm.sh
+fi
+
 fpath=($fpath "/home/alfredo/.zfunctions")
 
 eval "$(direnv hook $0)"
