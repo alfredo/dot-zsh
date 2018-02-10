@@ -62,7 +62,7 @@ setopt prompt_subst
 
 # Echoes a username/host string when connected over SSH (empty otherwise)
 ssh_info() {
-  [[ "$SSH_CONNECTION" != '' ]] && echo '%(!.%{$fg[red]%}.%{$fg[yellow]%})%n%{$reset_color%}@%{$fg[green]%}%m%{$reset_color%}:' || echo "%(!.%{$fg[red]%}.%{$fg[yellow]%})%n%{$reset_color%}@%{$fg[green]%}%m%{$reset_color%}:"
+  [[ "$SSH_CONNECTION" != '' ]] && echo '%(!.%{$fg[red]%}.%{$fg[yellow]%})%n%{$reset_color%}@%{$fg[green]%}%m%{$reset_color%}:' || echo "%(!.%{$fg[red]%}.%{$fg[blue]%})%n%{$reset_color%}%{$fg[red]%}@%{$reset_color%}%{$fg[cyan]%}%m%{$reset_color%}:"
 }
 
 # Echoes information about Git repository status when inside a Git repository
@@ -122,8 +122,16 @@ git_info() {
 
 }
 
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+function virtualenv_info {
+    [ $VIRTUAL_ENV ] && echo "
+%{$fg[red]%}["`basename $VIRTUAL_ENV`"]%{$reset_color%}"
+}
+
+
+
 # Use ❯ as the non-root prompt character; # for root
 # Change the prompt character color if the last command had a nonzero exit code
-PS1='
-$(ssh_info)%{$fg[magenta]%}%~%u $(git_info)
+PS1='$(virtualenv_info)
+$(ssh_info)%{$fg[green]%}%~%u $(git_info)
 %(?.%{$fg[blue]%}.%{$fg[red]%})%(!.#.❯)%{$reset_color%} '
