@@ -135,3 +135,5 @@ function virtualenv_info {
 PS1='$(virtualenv_info)
 $(ssh_info)%{$fg[green]%}%~%u $(git_info)
 %(?.%{$fg[blue]%}.%{$fg[red]%})%(!.#.❯)%{$reset_color%} '
+
+zstyle ':completion:*' menu select

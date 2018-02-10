@@ -114,4 +114,3 @@ if zstyle -t ':omz:environment:termcap' color; then
   export LESS_TERMCAP_ue=$'\E[0m'          # end underline
   export LESS_TERMCAP_us=$'\E[01;32m'      # begin underline
 fi
-
