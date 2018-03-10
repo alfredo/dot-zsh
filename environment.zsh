@@ -48,6 +48,7 @@ for path_file in /etc/manpaths.d/*(.N); do
 done
 
 path=(
+  /usr/local/bin
   /usr/local/{,s}bin
   ~/bin
   /usr/{,s}bin
@@ -62,6 +63,7 @@ done
 if [[ $OSTYPE == darwin* ]]; then
     path=(
         /opt/local/{,s}bin
+         /usr/local/bin
         /opt/local/Library/Frameworks/Python.framework/Versions/Current/bin
         $path
     )
