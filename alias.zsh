@@ -113,6 +113,8 @@ function ff() { find . -type f -iname '*'$*'*' -ls ; }
 alias git_week="git log --since=1.weeks --author=Alfredo --reverse"
 alias d='docker-compose'
 alias dstop='docker stop $(docker ps -a -q)'
+alias t='terraform'
+alias k='kubectl'
 
 function ack_py () {
     ack -G 'migrations|tests' --invert-file-match --py $1
