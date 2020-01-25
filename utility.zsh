@@ -53,3 +53,11 @@ function find-exec() {
   find . -type f -iname "*${1:-}*" -exec "${2:-file}" '{}' \;
 }
 
+function resetvirtualenv() {
+    if (( ${+VIRTUAL_ENV} )); then
+        deactivate
+    fi
+    rmvirtualenv "$1"
+    mkvirtualenv "$1"
+    echo cd $(pwd) >> ${VIRTUAL_ENV}/bin/postactivate
+}
